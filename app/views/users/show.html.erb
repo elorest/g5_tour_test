@@ -5,21 +5,43 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
+<% if @user.user_information %>
+	<p>
+	  <b>Name:</b>
+	  <%= @user.user_information.first_name + " " + @user.user_information.last_name %>
+	</p>
 
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
+	<p>
+	  <b>Phone number:</b>
+	  <%= @user.user_information.phone_number %>
+	</p>
+<% end %>
 
-<p>
-  <b>Phone number:</b>
-  <%= @user.phone_number %>
-</p>
+<% if @user.tour %>
+	<p>
+	  <b>Preferred date:</b>
+	  <%= @user.tour.preferred_date %>
+	</p>
 
+	<p>
+	  <b>Additional questions:</b>
+	  <%= @user.tour.additional_questions %>
+	</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+	<p>
+	  <b>Options:</b>
+	  <%= @user.tour.options.map(&:titleize).join(", ") %>
+	</p>
+
+	<% if @user.tour.rating %>
+		<p>
+		  <b>Rating:</b>
+		  <%= @user.tour.rating %>
+		</p>
+	<% else %>
+		Please rate your tour: 
+		<% (1..5).each do |i| %>
+			<%= link_to(i.to_s, tour_path(@user.tour, "tour[rating]" => i), :method => :put) %>
+		<% end %>
+	<% end %>
+<% end %>

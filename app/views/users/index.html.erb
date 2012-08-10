@@ -3,9 +3,8 @@
 <table>
   <tr>
     <th>Email</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Phone number</th>
+    <th>Ip address</th>
+    <th>Verification</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,9 +13,8 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.phone_number %></td>
+    <td><%= user.ip_address %></td>
+    <td><%= user.verification %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

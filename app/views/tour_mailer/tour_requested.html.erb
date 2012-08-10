@@ -1,0 +1,40 @@
+A new tour has been requested. Here is the relevant information.
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>IP Address:</b>
+  <%= @user.ip_address %>
+</p>
+
+<% if @user.user_information %>
+	<p>
+	  <b>Name:</b>
+	  <%= @user.user_information.first_name + " " + @user.user_information.last_name %>
+	</p>
+
+	<p>
+	  <b>Phone number:</b>
+	  <%= @user.user_information.phone_number %>
+	</p>
+<% end %>
+
+<% if @user.tour %>
+	<p>
+	  <b>Preferred date:</b>
+	  <%= @user.tour.preferred_date %>
+	</p>
+
+	<p>
+	  <b>Additional questions:</b>
+	  <%= @user.tour.additional_questions %>
+	</p>
+
+	<p>
+	  <b>Options:</b>
+	  <%= @user.tour.options.map(&:titleize).join(", ") %>
+	</p>
+<% end %>

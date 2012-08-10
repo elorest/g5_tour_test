@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should create verification code" do
+  	user = User.new(email: "isaac@isaacsloan.com", ip_address: "127.0.0.1")
+  	user.save
+  	user.verification.should_not be_blank?
+  end
 end

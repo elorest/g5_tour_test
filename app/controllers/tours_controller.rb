@@ -1,4 +1,5 @@
 class ToursController < ApplicationController
+  before_filter :logged_in?
   # GET /tours
   # GET /tours.json
   def index
@@ -41,10 +42,10 @@ class ToursController < ApplicationController
   # POST /tours.json
   def create
     @tour = Tour.new(params[:tour])
-
+    @tour.user_id = session[:user].id
     respond_to do |format|
       if @tour.save
-        format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
+        format.html { redirect_to user_path(session[:user]), notice: 'Tour was successfully requested.' }
         format.json { render json: @tour, status: :created, location: @tour }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class ToursController < ApplicationController
 
     respond_to do |format|
       if @tour.update_attributes(params[:tour])
-        format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
+        format.html { redirect_to user_path(session[:user]), notice: 'Tour was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,8 +1,11 @@
-UserTour::Application.routes.draw do
+Tours::Application.routes.draw do
   resources :tours
 
   resources :users
 
+  resources :user_informations
+
+  match 'user/:id/:verification' => 'users#show', :as => "verification"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -52,7 +55,7 @@ UserTour::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'users#new'
 
   # See how all your routes lay out with "rake routes"
 

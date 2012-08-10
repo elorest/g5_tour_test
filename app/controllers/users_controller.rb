@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :logged_in?, :exept => [:show, :new, :create]
   # GET /users
   # GET /users.json
   def index
@@ -14,7 +15,14 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    if params[:verification] == @user.verification
+      session[:user] = @user
+      if @user.user_information.blank?
+        return redirect_to new_user_information_path
+      elsif @user.tour.blank?
+        return redirect_to new_tour_path
+      end
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -25,7 +33,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
+    session[:user] = nil
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -41,10 +49,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.ip_address = request.remote_ip
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'Request sent. Please check your email to verify.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

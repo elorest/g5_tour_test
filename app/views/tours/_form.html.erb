@@ -10,11 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
   <div class="field">
     <%= f.label :preferred_date %><br />
     <%= f.date_select :preferred_date %>
@@ -24,12 +19,12 @@
     <%= f.text_field :additional_questions %>
   </div>
   <div class="field">
-    <%= f.label :options %><br />
-    <%= f.text_area :options %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.number_field :rating %>
+    Options <br />
+    <% Tour::AVAILABLE_OPTIONS.each do |option| %>
+      <%= check_box_tag "tour[options][]", option, false, :id => "options_#{option}" %>
+      <%= label_tag("options_#{option}", option.titleize) %>
+      <br />
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

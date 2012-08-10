@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-UserTour::Application.load_tasks
+Tours::Application.load_tasks

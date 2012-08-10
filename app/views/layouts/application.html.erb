@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UserTour</title>
+  <title>Tours</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<br />
+<%= link_to "Home", root_path %> | 
+<%= link_to("Account", user_path(session[:user])) if session[:user] %> | 
+<%= link_to("Current Step", verification_path(session[:user].id, session[:user].verification)) if session[:user] %>
+<br />
 <%= yield %>
 
 </body>
