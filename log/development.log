@@ -1,0 +1,424 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120808215316)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "phone_number" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120808215316')
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTours (20120808215550)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120808215316)
+Migrating to CreateTours (20120808215659)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tours" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "preferred_date" date, "additional_questions" varchar(255), "options" text, "rating" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120808215659')[0m
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("tours")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "tours" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "preferred_date" date, "additional_questions" varchar(255), "options" text, "rating" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "phone_number" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120808215659')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120808215316')
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  Rendered users/_form.html.erb (8.1ms)
+  Rendered users/edit.html.erb (13.5ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (23.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by UsersController#new as HTML
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" 
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{}}
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{}}
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"these"=>"params"}, "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{}, "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/1
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{}, "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/1
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{}, "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{}, "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "last_name", "phone_number", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["email", nil], ["first_name", nil], ["last_name", nil], ["phone_number", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tours" [0m
+Processing by ToursController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTour Load (0.1ms)[0m  SELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "tours" WHERE "tours"."id" = ?  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tours
+Completed 302 Found in 23ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "tours" 
+  [1m[36m (1.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ToursController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTour Load (0.0ms)[0m  SELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "tours" WHERE "tours"."id" = ?  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tours
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by ToursController#new as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tours" 
+Processing by ToursController#create as HTML
+  Parameters: {"tour"=>{}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tours/1
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "tours" 
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by ToursController#create as HTML
+  Parameters: {"tour"=>{}}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tours/1
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by ToursController#create as HTML
+  Parameters: {"tour"=>{}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/tours/1
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36mTour Load (0.1ms)[0m  [1mSELECT "tours".* FROM "tours" ORDER BY "tours"."id" DESC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by ToursController#create as HTML
+  Parameters: {"tour"=>{}}
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by ToursController#create as HTML
+  Parameters: {"tour"=>{}}
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#update as HTML
+  Parameters: {"tour"=>{"these"=>"params"}, "id"=>"1"}
+  [1m[36mTour Load (0.0ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#update as HTML
+  Parameters: {"tour"=>{}, "id"=>"1"}
+  [1m[36mTour Load (0.0ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tours/1
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#update as HTML
+  Parameters: {"tour"=>{}, "id"=>"1"}
+  [1m[36mTour Load (0.0ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/tours/1
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#update as HTML
+  Parameters: {"tour"=>{}, "id"=>"1"}
+  [1m[36mTour Load (0.0ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#update as HTML
+  Parameters: {"tour"=>{}, "id"=>"1"}
+  [1m[36mTour Load (0.0ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#index as HTML
+  [1m[36mTour Load (0.1ms)[0m  [1mSELECT "tours".* FROM "tours" [0m
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTour Load (0.1ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tours" ("additional_questions", "created_at", "options", "preferred_date", "rating", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["additional_questions", nil], ["created_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["options", nil], ["preferred_date", nil], ["rating", nil], ["updated_at", Wed, 08 Aug 2012 21:57:16 UTC +00:00], ["user_id", nil]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ToursController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTour Load (0.0ms)[0m  [1mSELECT "tours".* FROM "tours" WHERE "tours"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  Rendered tours/_form.html.erb (6.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+
+
+Started GET "/users" for 127.0.0.1 at 2012-08-08 15:57:16 -0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Compiled scaffolds.css  (35ms)  (pid 5013)
+Compiled tours.css  (1ms)  (pid 5013)
+Compiled users.css  (1ms)  (pid 5013)
+Compiled application.css  (55ms)  (pid 5013)
+Compiled jquery.js  (1ms)  (pid 5013)
+Compiled jquery_ujs.js  (0ms)  (pid 5013)
+Compiled tours.js  (95ms)  (pid 5013)
+Compiled users.js  (55ms)  (pid 5013)
+Compiled application.js  (185ms)  (pid 5013)
+Completed 200 OK in 345ms (Views: 344.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  Rendered tours/_form.html.erb (5.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+
+
+Started GET "/tours" for 127.0.0.1 at 2012-08-08 15:57:16 -0600
+Processing by ToursController#index as HTML
+  [1m[36mTour Load (0.1ms)[0m  [1mSELECT "tours".* FROM "tours" [0m
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  Rendered users/_form.html.erb (26.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
